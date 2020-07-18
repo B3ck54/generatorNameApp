@@ -12,7 +12,7 @@
     <v-col
     cols="6"
     class="text-center">
-    <v-card> {{ name }}</v-card>
+    <p>{{ name }}</p>
     </v-col>
   </v-row>
   <v-row>
@@ -29,7 +29,9 @@
   <v-col
   cols="6"
   class="text-center">        
-  <v-btn>
+  <v-btn
+    @click="reset">
+
   Reset
   </v-btn>
   </v-col>
@@ -47,20 +49,13 @@
     }),
       methods: {
       generatorName: function () {
-
-        // this.arrayConsonant.forEach(function(item, index) {
-        // alert(item, index);
-        // });
-
         while (this.name.length < 6) {
         this.name += this.arrayAlphabet[Math.floor(Math.random() * this.arrayAlphabet.length)];
         return this.name
         } 
-
-        // var pair1 = 2 * Math.floor(Math.random() * (this.pairs.length / 2));
-        // this.name += this.pairs.substr(pair1, 1);
-        // // this.name = this.name.replace(/[.]/g, "");
-        // return this.name     
+      },
+      reset: function(){
+         Object.assign(this.$data, this.$options.data());
       }
     }
   }
